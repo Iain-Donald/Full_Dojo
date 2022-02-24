@@ -1,0 +1,25 @@
+* {
+    background-color: black;
+    color: white;
+}
+
+h1 {
+    color: dodgerblue;
+}
+
+.container {
+    background-color: purple;
+    height: 500px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.item {
+    background-color: orange;
+    width: 75px;
+    height: 75px;
+    margin: 2px;
+    display: inline-block;
+}
