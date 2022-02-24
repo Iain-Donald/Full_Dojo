@@ -1,0 +1,31 @@
+Snippet 1:
+var|value
+0|"Paula"
+1|"Smith"
+2|"1234 Main Street"
+3|"St. Louis"
+4|"MO"
+5|12345
+
+log: ["Paula", "Smith", "1234 Main Street", "St. Louis", "MO", 12345]
+
+Snippet 2:
+var produce
+var|value
+0|"apples"
+1|"oranges"
+
+var frozen
+var|value
+0|"broccoli"
+1|"ice cream"
+>2|"hashbrowns"
+
+log: ["broccoli", "ice cream", "hashbrowns"]
+
+Snippet 3:
+var|value
+0|"Bambi"
+1|"E.T." > "Beetlejuice"
+2|"Toy Story"
+>3|"Zoro"
