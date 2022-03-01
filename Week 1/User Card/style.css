@@ -1,0 +1,48 @@
+* {
+    margin: 20px 0px;
+    padding: 0px;
+}
+
+body {
+    display: flex;
+    justify-content:space-evenly;
+    font-family: 'Roboto', sans-serif;
+}
+
+#main {
+    background-color: ivory;
+    height: 300px;
+    width: 600px;
+    border: 2px solid gray;
+    border-radius: 5px;
+    padding: 0px;
+    overflow: hidden;
+}
+
+#topNav {
+    background-color:cadetblue;
+    margin: 0px;
+    height: 25%;
+}
+
+#content {
+    margin: 0px;
+    padding: 20px;
+    height: 74%;
+    
+}
+
+h1, h3, p {
+    margin: 10px 0px;
+}
+
+a {
+    color: cornflowerblue;
+}
+
+.icon {
+    height: 20px;
+    padding: 0px;
+    margin: 0px;
+    vertical-align: middle;
+}
