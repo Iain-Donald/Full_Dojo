@@ -1,0 +1,95 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: cursive;
+}
+
+#HEADER {
+    background-color: lightgrey;
+    display: flex;
+    height: 35px;
+    margin: 0px 20px;
+    padding: 30px;
+    justify-content: space-between;
+}
+
+HEADER.h1 {
+    margin: 35px 0px;
+}
+
+#searchBar {
+    margin: 10px 0px 0px 0px;
+    border: 2px solid black;
+}
+
+input {
+    width: 300px;
+}
+
+#login {
+    border: 2px solid black;
+    background-color:rgb(31, 83, 179);
+    color: white;
+    box-shadow: 5px 5px 5px black;
+    padding: 0px 25px;
+    margin: 10px 0px 0px 0px;
+}
+
+#page {
+    display: flex;
+}
+
+#leftContent {
+    height: 100vh;
+    width: 60vw;
+    margin: 20px;
+    display: inline-block;
+}
+
+.contentBlock {
+    width: 100%;
+    height: fit-content;
+    margin: 0px 0px 20px 0px;
+    display: flex;
+    border: 3px solid black;
+}
+
+.leftBlock {
+    width:30%;
+    text-align: center;
+}
+
+.like {
+    background-color:rgb(218, 196, 73);
+    padding: 7px 20px;
+    margin: 20px;
+    border: 2px solid black;
+    box-shadow: 5px 5px 5px black;
+}
+
+.rightBlock {
+    margin: 0px 20px;
+    width: 70%;
+    text-align: center;
+    padding: 50px;
+}
+
+#rightContent {
+    height: fit-content;
+    width: 40vw;
+    margin: 20px 20px 0px 0px;
+    padding: 10px 0px 0px 30px;
+    border: 3px solid black;
+}
+
+#definition {
+    background-color: rgb(171, 212, 100);
+    padding: 7px 30px;
+    border: 2px solid black;
+    box-shadow: 5px 5px 5px black;
+    margin: 20px 0px;
+}
+
+a {
+    
+}
