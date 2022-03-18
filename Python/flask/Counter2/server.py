@@ -4,32 +4,24 @@ app.secret_key = 'keep it secret, keep it safe'
 
 
 def initSession():
-  try:
-    session['mainSession'] += 1
-  except KeyError:
-    session['mainSession'] = 1
-
-def addTwo():
+    if 'mainSession' in session:
         session['mainSession'] += 1
-
-def reset():
-    session['mainSession'] = 0
+    else:
+        session['mainSession'] = 1
 
 @app.route('/')
 def main():
     initSession()
-    def addTwo():
-        session['mainSession'] += 2
     return render_template('index.html')
 
 @app.route('/addTwo')
 def add():
-    addTwo()
+    session['mainSession'] += 1
     return redirect('/')
 
 @app.route('/reset')
 def resetSession():
-    reset()
+    session['mainSession'] = 0
     return redirect('/')
 
 if __name__=="__main__":
