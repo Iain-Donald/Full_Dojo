@@ -1,0 +1,25 @@
+1. 
+use world;
+
+select name, cl.language
+from country c
+join countrylanguage cl
+on c.code = cl.CountryCode
+where cl.language = 'Slovene';
+
+2. 
+select countries.name, count(cities.id)
+from cities
+join countries on countries.id = cities.country_id
+group by countries.name;
+
+3. 
+select cities.name, cities.population
+from cities
+join countries on countries.id = cities.country_id
+where countries.name = 'Mexico' AND cities.population > 500000;
+
+4. 
+select Percentage from countrylanguage
+where Percentage > 89
+order by Percentage desc;
