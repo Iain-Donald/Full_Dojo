@@ -20,6 +20,29 @@ join countries on countries.id = cities.country_id
 where countries.name = 'Mexico' AND cities.population > 500000;
 
 4. 
-select Percentage from countrylanguage
+select Language, Percentage
+from countrylanguage
 where Percentage > 89
 order by Percentage desc;
+
+5. 
+select surface_area, population
+from countries
+where population > 100000 AND surface_area < 501;
+
+6. 
+select name, government_form, capital, life_expectancy
+from countries
+where government_form = 'Constitutional Monarchy' AND capital > 200 AND life_expectancy > 75;
+
+7.
+select countries.name, cities.name, cities.district, cities.population
+from cities
+join countries on countries.id = cities.country_id
+where countries.name = 'Argentina' AND district = 'Buenos Aires' AND cities.population > 500000;
+
+8.
+select region, count(name)
+from countries
+group by countries.region
+order by count(name) desc;
