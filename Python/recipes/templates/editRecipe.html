@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/mainPage.css') }}">
+        <title>Users</title>
+    </head>
+    <body>
+        <div id="header">
+            <a href="/mainPage/{{recipes[id|int].user_id}}" class="headerLink">Dashboard</a>
+            <a href="/logout" class="headerLink">logout</a>
+        </div>
+        <h1>Edit</h1>
+    </body>
+</html>
