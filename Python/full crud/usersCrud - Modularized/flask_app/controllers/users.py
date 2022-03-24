@@ -1,7 +1,6 @@
-from flask import Flask, render_template, request, redirect
-from mysqlconnection import connectToMySQL
-from user import User
-app = Flask(__name__)
+from flask_app import app
+from flask import render_template, redirect, request, session, flash
+from flask_app.models.user import User
 
 @app.route("/users")
 def read_all():
@@ -45,4 +44,3 @@ def index():
             
 if __name__ == "__main__":
     app.run(debug=True)
-

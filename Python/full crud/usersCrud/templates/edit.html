@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style.css') }}">
+        <title>Full Crud</title>
+    </head>
+    <body>
+        <a href="/users">Home</a>
+        <h1>Edit a User</h1>
+        <form action="/editSQL{{index|int}}" method="POST">
+            <label for="first_name">First Name:</label>
+            <input type="text" name="first_name">
+            <label for="last_name">Last Name:</label>
+            <input type="text" name="last_name">
+            <label for="email" >Email:</label>
+            <input type="text" name="email">
+            <input type="submit" value="Edit User">
+        </form> 
+    </body>
+</html>

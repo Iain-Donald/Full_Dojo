@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style.css') }}">
+        <title>Full Crud</title>
+    </head>
+    <body>
+        <a href="/users">Home</a>
+        <h1>User {{users[index|int].id}}</h1>
+        <p>Full Name: {{users[index|int].first_name}} {{users[index|int].last_name}}</p>
+        <p>Email: {{users[index|int].email}}</p>
+        <p>Created At: {{users[index|int].created_at}}</p>
+        <p>Updated At: {{users[index|int].updated_at}}</p>
+        
+        <a href="/edit">edit</a>
+        <a href="/delete{{users[index|int].id}}">delete</a>
+    </body>
+</html>
