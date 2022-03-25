@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/mainPage.css') }}">
+        <title>Main</title>
+    </head>
+    <body>
+        <div id="header">
+            <a href="/createRecipe/{{id}}" class="headerLink">Create</a>
+            <a href="/logout" class="headerLink">logout</a>
+        </div>
+        <h1>Welcome, {{users[(id|int) - 1].first_name}}!</h1>
+        <h3>These are the recipes</h3>
+        <table>
+            <tr>
+                <td>Name</td>
+                <td>Under 30 minutes?</td>
+                <td>Actions</td>
+            </tr>
+            {%for i in range(recipes|length)%}
+            <tr>
+                <td>{%print(recipes[i].name)%}</td>
+                <td>
+                {%if(recipes[i].under30 == 1):%}
+                    {%print("Yes")%}
+                {%else:%}
+                    {%print("No")%}
+                {% endif %}
+                </td>
+                <td>
+                    <a href="/showRecipe/{{i}}">View Instructions </a>
+                    <a href="/editRecipe/{{i}}"> Edit </a>
+                    <a href="/delete{{recipes[i].id}}">Delete </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        
+    </body>
+</html>

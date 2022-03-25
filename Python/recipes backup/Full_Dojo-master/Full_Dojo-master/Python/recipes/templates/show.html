@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/mainPage.css') }}">
+        <title>Users</title>
+    </head>
+    <body>
+        <div id="header">
+            <a href="/mainPage/{{id}}" class="headerLink">Dashboard</a>
+            <a href="/logout" class="headerLink">logout</a>
+        </div>
+        <h1>Welcome, {{users[(id|int) - 1].first_name}}!</h1>
+        <h1>{{recipes[id|int].name}}</h1>
+        <div id="showBox">
+        <p>Description: {{recipes[id|int].description}}</p>
+        <p>Instructions: {{recipes[id|int].instructions}}</p>
+        
+        <p>Under 30 minutes? 
+            {%if(recipes[id|int].under30 == 1):%}
+                {%print("Yes")%}
+            {%else:%}
+                {%print("No")%}
+            {% endif %}
+        </p>
+        <p>Date Made: {{recipes[id|int].date_made}}</p>
+        </div>
+    </body>
+</html>

@@ -7,11 +7,11 @@
     </head>
     <body>
         <div id="header">
-            <a href="/mainPage/{{id}}" class="headerLink">Dashboard</a>
+            <a href="/mainPage/{{recipes[id|int].user_id}}" class="headerLink">Dashboard</a>
             <a href="/logout" class="headerLink">logout</a>
         </div>
         <h1>Add New Recipe</h1>
-        <form action="/saveRecipe/{{id}}" method="POST">
+        <form action="/saveRecipe/{{recipes[id|int].user_id}}" method="POST">
             <label for="name" >Name:</label>
             <input type="text" name="name">
             <label for="description" >Description:</label>

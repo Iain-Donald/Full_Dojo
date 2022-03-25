@@ -47,7 +47,9 @@ def saveRecipe(id):
 @app.route("/delete<i>")
 def delete(i: int):
     Recipe.delete(i)
-    linkText = "/mainPage/" + i
+    recipes = Recipe.get_all()
+    userID = recipes[i].user_id
+    linkText = "/mainPage/" + userID
     return redirect(linkText)
             
 
@@ -77,7 +79,8 @@ def mainPage(id):
 
 @app.route("/createRecipe/<user_id>")
 def createRecipe(user_id):
-    return render_template("createRecipe.html", id=user_id)
+    recipes = Recipe.get_all()
+    return render_template("createRecipe.html", id=user_id, recipes = recipes)
 
 @app.route("/editRecipe/<user_id>")
 def editRecipe(user_id):

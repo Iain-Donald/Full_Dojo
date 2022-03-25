@@ -37,4 +37,9 @@ class Recipe:
         # data is a dictionary that will be passed into the save method from server.py
         return connectToMySQL('recipes').query_db( query )
 
-
+    @classmethod
+    def edit(cls, data):
+        query = "UPDATE recipes.recipes SET name=%(name)s, description=%(description)s, instructions=%(instructions)s WHERE user_id=%(user_id)s"
+        print(query)
+        # data is a dictionary that will be passed into the save method from server.py
+        return connectToMySQL('recipes').query_db( query, data )

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/mainPage.css') }}">
+        <title>Users</title>
+    </head>
+    <body>
+        <div id="header">
+            <a href="/mainPage/{{id}}" class="headerLink">Dashboard</a>
+            <a href="/logout" class="headerLink">logout</a>
+        </div>
+        <h1>Add New Recipe</h1>
+        <form action="/saveRecipe/{{id}}" method="POST">
+            <label for="name" >Name:</label>
+            <input type="text" name="name">
+            <label for="description" >Description:</label>
+            <input type="text" name="description" class="largeBox">
+            <label for="instructions" >Instructions:</label>
+            <input type="text" name="instructions" class="largeBox">
+            
+            <p>Under 30 minutes?</p>
+            <div id="buttons">
+            <label for="under30">True</label>
+            <input type="radio" name="under30" value="1">
+            <label for="under30">False</label>
+            <input type="radio" name="under30" value="0">
+            </div>
+
+            <label for="date_made" >Date made:</label>
+            <input type="date" name="date_made">
+            <input type="submit" value="Create">
+            </form>
+    </body>
+</html>
