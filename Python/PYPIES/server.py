@@ -21,7 +21,7 @@ def new_user():
 
 @app.route("/save", methods=['POST', 'GET'])
 def save():
-    if (len(request.form['password']) < 1 or len(request.form['first_name']) < 1):
+    if (len(request.form['password']) < 1 or len(request.form['first_name']) < 1 or len(request.form['last_name']) < 1 or len(request.form['email']) < 1):
         error = "Error: One field was left blank"
         return render_template("index.html", error = error)
 
@@ -41,6 +41,11 @@ def save():
 
 @app.route("/saveCar/<id>", methods=['POST', 'GET'])
 def saveCar(id):
+    linkText = "/mainPage2/" + id
+    if (len(request.form['make']) < 1 or len(request.form['model']) < 1 or len(request.form['description']) < 1):
+        session['error'] = "Error: One field was left blank"
+        return redirect(linkText)
+
     data = {
         "make": request.form.get("make"),
         "model" : request.form.get("model"),
@@ -51,7 +56,6 @@ def saveCar(id):
     }
     Car.disableChecks()
     Car.save(data)
-    linkText = "/mainPage2/" + id
     return redirect(linkText)
 
 @app.route("/delete<i>")
