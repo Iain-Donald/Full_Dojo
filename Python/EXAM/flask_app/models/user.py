@@ -1,7 +1,14 @@
-# import the function that will return an instance of a connection
-from mysqlconnection import connectToMySQL
-from flask import flash
-# model the class after the friend table from our database
+from flask_app.config.mysqlconnection import connectToMySQL
+class Burger:
+    def __init__(self,data):
+        self.id = data['id']
+        self.name = data['name']
+        self.bun = data['bun']
+        self.meat = data['meat']
+        self.calories = data['calories']
+        self.created_at = data['created_at']
+        self.updated_at = data['updated_at']
+
 class User:
     def __init__( self , data ):
         self.id = data['id']
@@ -9,16 +16,11 @@ class User:
         self.last_name = data['last_name']
         self.email = data['email']
         self.password = data['password']
-    # Now we use class methods to query our database
     @classmethod
     def get_all(cls):
         query = "SELECT * FROM users;"
-        ###query = "SELECT * FROM users LEFT JOIN cars.car ON car.users_id = users.id;"
-        # make sure to call the connectToMySQL function with the schema you are targeting.
         results = connectToMySQL('cars').query_db(query)
-        # Create an empty list to append our instances of friends
         usersList = []
-        # Iterate over the db results and create instances of friends with cls.
         for users in results:
             usersList.append( User(users) )
         
@@ -27,7 +29,6 @@ class User:
     @classmethod
     def save(cls, data ):
         query = "INSERT INTO cars.users ( first_name , last_name , email, password ) VALUES ( %(first_name)s , %(last_name)s , %(email)s , %(password)s );"
-        # data is a dictionary that will be passed into the save method from server.py
         return connectToMySQL('cars').query_db( query, data )
 
     @classmethod
@@ -35,13 +36,12 @@ class User:
         query = "DELETE FROM cars.users WHERE id="
         query = query + id + ";"
         print(query)
-        # data is a dictionary that will be passed into the save method from server.py
         return connectToMySQL('cars').query_db( query )
 
 
     @staticmethod
     def validate_pw(pw, confPw):
-        is_valid = True # we assume this is true
+        is_valid = True
         if (pw != confPw):
             is_valid = False
         return is_valid

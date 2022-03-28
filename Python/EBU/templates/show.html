@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/mainPage.css') }}">
+        <title>Users</title>
+    </head>
+    <body>
+        <div id="header">
+            <a href="/mainPage/{{session['userID']}}" class="headerLink">Dashboard</a>
+            <a href="/logout" class="headerLink">logout</a>
+        </div>
+        <div id="showBox">
+        <h3>$ {{cars[id|int].price}}</h3>
+        <p>Model: {{cars[id|int].model}}</p>
+        <p>Make: {{cars[id|int].make}}</p>
+        <p>Year: {{cars[id|int].year}}</p>
+        <p>Description:<br> {{cars[id|int].description}}</p>
+        <p>{{cars[id|int].carid}}</p>
+
+        <p>Seller: {{users[cars[id|int].users_id|int - 1].first_name}} {{users[cars[id|int].users_id|int - 1].last_name}}</p>
+        </div>
+        <a href="/delete{{cars[id|int].carid}}">Purchase</a>
+    </body>
+</html>

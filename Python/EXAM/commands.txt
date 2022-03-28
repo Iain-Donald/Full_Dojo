@@ -1,0 +1,5 @@
+SELECT * FROM cars.users;
+SELECT * FROM cars.car;
+SELECT * FROM cars.users WHERE id=2;
+DELETE FROM cars.users;
+INSERT INTO cars.car ( make , model, year, description, price, users_id ) VALUES ( 'Honda' , 'Civic', '2010', 'example', 1000, 1 );

@@ -32,9 +32,10 @@ class Car:
 
     @classmethod
     def delete(cls, id ):
-        query = "DELETE FROM cars.car WHERE id="
-        query = query + id + ";"
-        print(query)
+        #query = "DELETE FROM cars.users WHERE id="
+        #query = query + id + ";"
+        query = "SELECT * FROM cars.car;"
+        print("/////////////////////////////////////////////", id)
 
         return connectToMySQL('cars').query_db( query )
 
