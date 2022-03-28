@@ -1,3 +1,4 @@
+from operator import length_hint
 from flask_bcrypt import Bcrypt
 from flask import Flask, render_template, request, redirect, session
 from mysqlconnection import connectToMySQL
@@ -20,6 +21,14 @@ def new_user():
 
 @app.route("/save", methods=['POST', 'GET'])
 def save():
+    if (len(request.form['password']) < 1 or len(request.form['first_name']) < 1):
+        error = "Error: One field was left blank"
+        return render_template("index.html", error = error)
+
+    if(str(request.form['confPass']) != str(request.form['password'])):
+        error = "Error: Password does not match Confirm Password"
+        return render_template("index.html", error = error)
+    
     pw_hash = bcrypt.generate_password_hash(request.form['password'])
     data = {
         "first_name": request.form.get("first_name"),
@@ -27,13 +36,7 @@ def save():
         "email" : request.form.get("email"),
         "password" : pw_hash
     }
-
-    error = ""
-    if (User.validate_pw(request.form.get("password"), request.form.get("confPass"))):
-        error = ""
-        User.save(data)
-    else:
-        error = "Error: Passwords don't match"
+    User.save(data)
     return redirect("/")
 
 @app.route("/saveCar/<id>", methods=['POST', 'GET'])
@@ -43,18 +46,28 @@ def saveCar(id):
         "model" : request.form.get("model"),
         "year" : request.form.get("year"),
         "description" : request.form.get("description"),
-        "price" : request.form.get("price"),
+        "price" : -1,
         "user_id" : id
     }
     Car.disableChecks()
     Car.save(data)
-    linkText = "/mainPage/" + id
+    linkText = "/mainPage2/" + id
     return redirect(linkText)
 
 @app.route("/delete<i>")
 def delete(i: int):
     Car.delete(i)
-    linkText = "/mainPage/" + i
+    linkText = "/mainPage2/" + i
+    return redirect(linkText)
+
+@app.route("/addVote<id>")
+def addVote(id: int):
+    cars = Car.get_all()
+    for j in range(len(cars)):
+        if (cars[j].year == None):
+            Car.setZero(cars[j].id)
+    Car.addVote(id)
+    linkText = "/mainPage2/" + id
     return redirect(linkText)
             
 
@@ -62,17 +75,22 @@ def delete(i: int):
 def login():
     users = User.get_all()
     error = ""
+    if len(request.form.get("email")) < 1 or len(request.form.get("email")) < 1:
+        error = "Error: Email or Password left blank"
+        return render_template("index.html", error = error)
+
+    if(len(str(request.form.get("email"))) < 1 and len(str(request.form.get("password"))) < 1):
+        error = "Error: Email or Password left blank"
     for i in range(len(users)):
         userHashedPW = users[i].password
         if(users[i].email == request.form.get("email") and bcrypt.check_password_hash(userHashedPW, request.form['pw'])):
-            session['loggedin'] = True
-            session['userID'] = users[i].id
-            session['dictIndex'] = i
-            redirectStr = ("/mainPage/" + str(session['userID']))
-            return redirect(redirectStr)
+                session['loggedin'] = True
+                session['userID'] = users[i].id
+                session['dictIndex'] = i
+                redirectStr = ("/mainPage2/" + str(session['userID']))
+                return redirect(redirectStr)
 
-    error = "Error: User not found"
-    return redirect("/")
+    return render_template("index.html", error = error)
 
 @app.route("/logout")
 def logout():
@@ -84,6 +102,12 @@ def mainPage(id):
     users = User.get_all()
     cars = Car.get_all()
     return render_template("mainPage.html", users = users, cars = cars)
+
+@app.route("/mainPage2/<id>")
+def mainPage2(id):
+    users = User.get_all()
+    cars = Car.get_all()
+    return render_template("mainPage2.html", id = id, users = users, cars = cars)
 
 @app.route("/createCar/<id>")
 def createCar(id):

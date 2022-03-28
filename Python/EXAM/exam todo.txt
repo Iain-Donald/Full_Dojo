@@ -1,6 +1,4 @@
-MVC
 Validations for every form
-Email regex
 DONE PW Encryption
 Make sure user has email in database, and check decrypt when logging in
-fix update and delete
+DONE fix update and delete

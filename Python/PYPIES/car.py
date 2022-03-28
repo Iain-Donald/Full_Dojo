@@ -34,7 +34,6 @@ class Car:
     def delete(cls, id ):
         query = "DELETE FROM cars.car WHERE carid="
         query = query + id + ";"
-        print("/////////////////////////////////////////////", id)
 
         return connectToMySQL('cars').query_db( query )
 
@@ -54,4 +53,23 @@ class Car:
 
         return connectToMySQL('cars').query_db( query )
 
+    @classmethod
+    def addVote(cls, id ):
+        id = int(id)
+        query = "UPDATE cars.car "
+        query = query + "SET year = year + 1"
+        query = query + " WHERE carid=" + str(id) + ";"
+        print(query)
+
+        return connectToMySQL('cars').query_db( query )
+
+    @classmethod
+    def setZero(cls, id ):
+        id = int(id)
+        query = "UPDATE cars.car "
+        query = query + "SET year = 0"
+        query = query + " WHERE carid=" + str(id) + ";"
+        print(query)
+
+        return connectToMySQL('cars').query_db( query )
 

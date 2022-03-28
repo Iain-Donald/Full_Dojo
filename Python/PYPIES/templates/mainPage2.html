@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/mainPage.css') }}">
+        <title>Main</title>
+    </head>
+    <body>
+        <div id="header">
+            <a href="/mainPage/{{session['userID']}}" class="headerLink">Pie Derby</a>
+            <a href="/logout" class="headerLink">logout</a>
+        </div>
+        <h1>PyPies by {{users[session['dictIndex']|int].first_name}}</h1>
+        <table style="width:70%">
+            <tr>
+                <td>Name</td>
+                <td>Actions</td>
+            </tr>
+            {%for i in range(cars|length)%}
+            {%if(session['userID'] == cars[i].users_id):%}
+            <tr>
+                <td>{%print(cars[i].model)%}</td>
+                <td class="actions">
+                    <p>
+                        <a href="/editCar/{{i}}">Edit</a>
+                        <a href="/delete{{cars[i|int].id}}">Delete</a>
+                    </p>
+                </td>
+            </tr>
+            {%endif%}
+            {% endfor %}
+        </table>
+        <form action="/saveCar/{{session['userID']}}" method="POST">
+
+            <label for="model" >Name:</label>
+            <input type="text" name="model">
+
+            <label for="description" >Filling:</label>
+            <input type="text" name="description">
+
+            <label for="make" >Crust:</label>
+            <input type="text" name="make">
+            
+            
+            <input type="submit" value="Add Pie">
+            </form>
+    </body>
+</html>

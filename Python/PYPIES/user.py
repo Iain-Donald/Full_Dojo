@@ -32,11 +32,4 @@ class User:
         return connectToMySQL('cars').query_db( query )
 
 
-    @staticmethod
-    def validate_pw(pw, confPw):
-        is_valid = True
-        if (pw != confPw):
-            is_valid = False
-        return is_valid
-
 

@@ -11,21 +11,19 @@
             <a href="/logout" class="headerLink">logout</a>
         </div>
         <div id="showBox">
-        <h3>$ {{cars[id|int].price}}</h3>
-        <p>Model: {{cars[id|int].model}}</p>
-        <p>Make: {{cars[id|int].make}}</p>
-        <p>Year: {{cars[id|int].year}}</p>
-        <p>Description:<br> {{cars[id|int].description}}</p>
+        <h3>{{cars[id|int].model}} by 
 
-        <p>
             {%for j in range(users|length)%}
                     {%if(cars[id|int].users_id == users[j].id)%}
                         {%print(users[j].first_name)%}
                         {%print(users[j].last_name)%}
                     {%endif%}
             {%endfor%}
-        </p>
-        
+
+        </h3>
+        <p>{{cars[id|int].description}} with a {{cars[id|int].make}}</p>
+        <p>Cast a Vote:</p>
+        <a href="/addVote{{cars[id|int].id}}">Delicious</a>
         </div>
         <a href="/delete{{cars[id|int].id}}">Purchase</a>
     </body>
