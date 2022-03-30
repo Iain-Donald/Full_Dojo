@@ -1,11 +1,9 @@
-from ast import ClassDef
 from operator import length_hint
 from flask_bcrypt import Bcrypt
 from flask import Flask, render_template, request, redirect, session
 from mysqlconnection import connectToMySQL
 from user import User
 from car import Car
-import re
 app = Flask(__name__)
 app.secret_key = 'password123verysecure'
 SESSION_TYPE = 'redis'
@@ -24,12 +22,12 @@ def new_user():
 @app.route("/save", methods=['POST', 'GET'])
 def save():
     if (len(request.form['password']) < 1 or len(request.form['first_name']) < 1 or len(request.form['last_name']) < 1 or len(request.form['email']) < 1):
-        session['error'] = "Error: One field was left blank"
-        return render_template("index.html")
+        error = "Error: One field was left blank"
+        return render_template("index.html", error = error)
 
     if(str(request.form['confPass']) != str(request.form['password'])):
-        session['error'] = "Error: Password does not match Confirm Password"
-        return render_template("index.html")
+        error = "Error: Password does not match Confirm Password"
+        return render_template("index.html", error = error)
     
     pw_hash = bcrypt.generate_password_hash(request.form['password'])
     data = {
@@ -80,27 +78,23 @@ def addVote(id: int):
 @app.route("/login", methods=['POST', 'GET'])
 def login():
     users = User.get_all()
+    error = ""
     if len(request.form.get("email")) < 1 or len(request.form.get("email")) < 1:
-        session['error'] = "Error: Email or Password left blank"
-        return render_template("index.html")
+        error = "Error: Email or Password left blank"
+        return render_template("index.html", error = error)
 
     if(len(str(request.form.get("email"))) < 1 and len(str(request.form.get("password"))) < 1):
-        session['error'] = "Error: Email or Password left blank"
+        error = "Error: Email or Password left blank"
     for i in range(len(users)):
         userHashedPW = users[i].password
-        email = request.form.get("email")
-        if(isEmail(email)):
-            if(users[i].email == email and bcrypt.check_password_hash(userHashedPW, request.form['pw'])):
+        if(users[i].email == request.form.get("email") and bcrypt.check_password_hash(userHashedPW, request.form['pw'])):
                 session['loggedin'] = True
                 session['userID'] = users[i].id
                 session['dictIndex'] = i
                 redirectStr = ("/mainPage2/" + str(session['userID']))
                 return redirect(redirectStr)
-        else:
-            session['error'] = "Invalid Email"
-            return render_template("index.html")
 
-    return render_template("index.html")
+    return render_template("index.html", error = error)
 
 @app.route("/logout")
 def logout():
@@ -148,18 +142,6 @@ def updateCar(id):
     Car.update(id, data)
     linkText = "/mainPage/" + id
     return redirect(linkText)
-
-
-def isEmail(email):
-    emailRegex = ".+@.+\.com|net"
-    x = re.search(emailRegex, email)
-
-    if x:
-        print("Valid email")
-        return True
-    else:
-        print("Invalid email")
-        return False
 
 if __name__ == "__main__":
     app.run(debug=True)

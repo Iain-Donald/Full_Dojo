@@ -28,6 +28,7 @@ class User:
         #query = "DELETE FROM cars.users WHERE id="
         #query = query + id + ";"
         query = "SELECT * FROM cars.car;"
+        print("/////////////////////////////////////////////", id)
         return connectToMySQL('cars').query_db( query )
 
 
