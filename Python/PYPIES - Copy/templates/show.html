@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/mainPage.css') }}">
+        <title>Users</title>
+    </head>
+    <body>
+        <div id="header">
+            <a href="/mainPage/{{session['userID']}}" class="headerLink">Dashboard</a>
+            <a href="/logout" class="headerLink">logout</a>
+        </div>
+        <div id="showBox">
+        <h3>{{cars[id|int].model}} by 
+
+            {%for j in range(users|length)%}
+                    {%if(cars[id|int].users_id == users[j].id)%}
+                        {%print(users[j].first_name)%}
+                        {%print(users[j].last_name)%}
+                    {%endif%}
+            {%endfor%}
+
+        </h3>
+        <p>{{cars[id|int].description}} with a {{cars[id|int].make}}</p>
+        <p>Cast a Vote:</p>
+        <a href="/addVote{{cars[id|int].id}}">Delicious</a>
+        </div>
+        <a href="/delete{{cars[id|int].id}}">Purchase</a>
+    </body>
+</html>

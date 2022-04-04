@@ -7,43 +7,33 @@
     </head>
     <body>
         <div id="header">
-            <a href="/mainPage/{{session['userID']}}" class="headerLink">Pie Derby</a>
+            <a href="/createPainting/{{session['userID']}}" class="headerLink">Add Painting</a>
             <a href="/logout" class="headerLink">logout</a>
         </div>
-        <h1>PyPies by {{users[session['dictIndex']|int].first_name}}</h1>
+        <h1>Welcome {{users[session['dictIndex']|int].first_name}} {{users[session['dictIndex']|int].last_name}}!</h1>
+        <h3>Paintings</h3>
         <table style="width:70%">
             <tr>
                 <td>Name</td>
+                <td>Artist</td>
                 <td>Actions</td>
             </tr>
-            {%for i in range(cars|length)%}
-            {%if(session['userID'] == cars[i].users_id):%}
+            {%for i in range(paintings|length)%}
             <tr>
-                <td>{%print(cars[i].model)%}</td>
+                <td><a href="/showPainting/{{i}}">{%print(paintings[i].title)%}</a></td>
+                <td>
+                    {{artists[i].first_name}} {{artists[i].last_name}}
+                </td>
                 <td class="actions">
-                    <p>
-                        <a href="/editCar/{{i}}">Edit</a>
-                        <a href="/delete{{cars[i|int].id}}">Delete</a>
+                    <p>{%if(session['userID'] == paintings[i].user_id):%}
+                        <a href="/editPainting/{{i}}">Edit | </a>
+                        <a href="/delete{{i}}">Delete</a>
+                        {%endif%}
                     </p>
                 </td>
             </tr>
-            {%endif%}
             {% endfor %}
         </table>
-        <form action="/saveCar/{{session['userID']}}" method="POST">
-
-            <label for="model" >Name:</label>
-            <input type="text" name="model">
-
-            <label for="description" >Filling:</label>
-            <input type="text" name="description">
-
-            <label for="make" >Crust:</label>
-            <input type="text" name="make">
-            
-            
-            <input type="submit" value="Add Pie">
-            </form>
-            <p>{{session['error']}}</p>
+        
     </body>
 </html>

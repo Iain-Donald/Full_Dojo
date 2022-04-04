@@ -4,12 +4,17 @@ from flask_bcrypt import Bcrypt
 from flask import Flask, render_template, request, redirect, session
 from mysqlconnection import connectToMySQL
 from user import User
-from painting import Painting
+from painting import Car
 import re
 app = Flask(__name__)
 app.secret_key = 'password123verysecure'
 SESSION_TYPE = 'redis'
 bcrypt = Bcrypt(app)
+
+@app.route("/users")
+def read_all():
+    users = User.get_all()
+    return render_template("read.html", users = users)
 
 @app.route("/")
 def new_user():
@@ -19,11 +24,11 @@ def new_user():
 @app.route("/save", methods=['POST', 'GET'])
 def save():
     if (len(request.form['password']) < 1 or len(request.form['first_name']) < 1 or len(request.form['last_name']) < 1 or len(request.form['email']) < 1):
-        session['error'] = "Error: One or more field(s) was left blank"
+        session['error'] = "Error: One field was left blank"
         return render_template("index.html")
 
     if(str(request.form['confPass']) != str(request.form['password'])):
-        session['error'] = "Error: Passwords don't match"
+        session['error'] = "Error: Password does not match Confirm Password"
         return render_template("index.html")
     
     pw_hash = bcrypt.generate_password_hash(request.form['password'])
@@ -36,32 +41,39 @@ def save():
     User.save(data)
     return redirect("/")
 
-@app.route("/savePainting/<id>", methods=['POST', 'GET'])
-def savePainting(id):
+@app.route("/saveCar/<id>", methods=['POST', 'GET'])
+def saveCar(id):
     linkText = "/mainPage2/" + id
-    if (len(request.form['title']) < 1 or len(request.form['description']) < 1 or len(request.form['price']) < 1):
+    if (len(request.form['make']) < 1 or len(request.form['model']) < 1 or len(request.form['description']) < 1):
         session['error'] = "Error: One field was left blank"
-        return render_template("createPainting.html", id=id)
-
-    session['error'] = ""
+        return redirect(linkText)
 
     data = {
-        "title": request.form.get("title"),
+        "make": request.form.get("make"),
+        "model" : request.form.get("model"),
+        "year" : request.form.get("year"),
         "description" : request.form.get("description"),
-        "price" : request.form.get("price"),
+        "price" : -1,
         "user_id" : id
     }
-    Painting.disableChecks()
-    Painting.save(data)
+    Car.disableChecks()
+    Car.save(data)
     return redirect(linkText)
 
-@app.route("/delete<id>")
-def delete(id):
-    paintings = Painting.get_all()
-    id = int(id)
-    deleteID = paintings[id].id
-    Painting.delete(deleteID)
-    linkText = "/mainPage2/" + str(id)
+@app.route("/delete<i>")
+def delete(i: int):
+    Car.delete(i)
+    linkText = "/mainPage2/" + i
+    return redirect(linkText)
+
+@app.route("/addVote<id>")
+def addVote(id: int):
+    cars = Car.get_all()
+    for j in range(len(cars)):
+        if (cars[j].year == None):
+            Car.setZero(cars[j].id)
+    Car.addVote(id)
+    linkText = "/mainPage2/" + id
     return redirect(linkText)
             
 
@@ -82,7 +94,6 @@ def login():
                 session['loggedin'] = True
                 session['userID'] = users[i].id
                 session['dictIndex'] = i
-                session['error'] = ""
                 redirectStr = ("/mainPage2/" + str(session['userID']))
                 return redirect(redirectStr)
         else:
@@ -94,70 +105,61 @@ def login():
 @app.route("/logout")
 def logout():
     session['loggedin'] = False
-    session.clear()
     return redirect("/")
+
+@app.route("/mainPage/<id>")
+def mainPage(id):
+    users = User.get_all()
+    cars = Car.get_all()
+    return render_template("mainPage.html", users = users, cars = cars)
 
 @app.route("/mainPage2/<id>")
 def mainPage2(id):
-    if not 'userID' in session:
-        return redirect('/')
-    
     users = User.get_all()
-    paintings = Painting.get_all()
-    return render_template("mainPage2.html", id = id, users = users, paintings = paintings, artists = getArtists())
+    cars = Car.get_all()
+    return render_template("mainPage2.html", id = id, users = users, cars = cars)
 
-@app.route("/createPainting/<id>")
-def createPainting(id):
-    if not 'userID' in session:
-        return redirect('/')
-    return render_template("createPainting.html", id=id)
+@app.route("/createCar/<id>")
+def createCar(id):
+    return render_template("createCar.html", id=id)
 
-@app.route("/editPainting/<user_id>")
-def editPainting(user_id):
-    if not 'userID' in session:
-        return redirect('/')
-    paintings = Painting.get_all()
-    return render_template("editPainting.html", id=user_id, paintings = paintings)
+@app.route("/editCar/<user_id>")
+def editCar(user_id):
+    cars = Car.get_all()
+    return render_template("editCar.html", id=user_id, cars = cars)
 
-@app.route("/showPainting/<id>")
-def showPainting(id):
-    if not 'userID' in session:
-        return redirect('/')
+@app.route("/showCar/<id>")
+def showCar(id):
     users = User.get_all()
-    paintings = Painting.get_all()
-    return render_template("show.html", id=id, paintings = paintings, users = users)
+    cars = Car.get_all()
+    return render_template("show.html", id=id, cars = cars, users = users)
 
-@app.route("/updatePainting/<id>", methods=['POST', 'GET'])
-def updatePainting(id):
-    if not 'userID' in session:
-        return redirect('/')
-    if (len(request.form['title']) < 1 or len(request.form['description']) < 1 or len(request.form['price']) < 1):
-        session['error'] = "Error: One field was left blank"
-        return render_template("editPainting.html", id=id)
+@app.route("/updateCar/<id>", methods=['POST', 'GET'])
+def updateCar(id):
     data = {
-        "title": request.form.get("title"),
+        "make": request.form.get("make"),
+        "model" : request.form.get("model"),
+        "year" : request.form.get("year"),
         "description" : request.form.get("description"),
-        "price" : request.form.get("price"),
+        "price" : -1,
         "user_id" : id
     }
-    session['error'] = ""
-    
-    Painting.update(id, data)
-    linkText = "/mainPage2/" + id
+    Car.disableChecks()
+    Car.update(id, data)
+    linkText = "/mainPage/" + id
     return redirect(linkText)
 
-
+9
 def isEmail(email):
-    EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
-    is_valid = True
-        # test whether a field matches the pattern
-    if not EMAIL_REGEX.match(email): 
-        session['error'] = 'Invalid email address!'
-        is_valid = False
-    return is_valid
+    emailRegex = ".+@.+\.com|net"
+    x = re.search(emailRegex, email)
 
-def getArtists():
-    return Painting.getArtists()
+    if x:
+        print("Valid email")
+        return True
+    else:
+        print("Invalid email")
+        return False
 
 if __name__ == "__main__":
     app.run(debug=True)

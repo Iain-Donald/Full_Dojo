@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/mainPage.css') }}">
+        <title>Users</title>
+    </head>
+    <body>
+        <div id="header">
+            <a href="/createPainting/{{session['userID']}}" class="headerLink">Add Painting</a>
+            <a href="/mainPage2/{{session['userID']}}" class="headerLink">Dashboard</a>
+            <a href="/logout" class="headerLink">logout</a>
+        </div>
+        <h1>Edit a painting</h1>
+        <form action="/updatePainting/{{paintings[id|int].id}}" method="POST">
+            <label for="title" >Title:</label>
+            <input type="text" name="title" value="{{paintings[id|int].title}}">
+            <label for="description" >Description:</label>
+            <input type="text" name="description" class="largeBox" value="{{paintings[id|int].description}}">
+            <label for="price" >Price:</label>
+            <input type="number" name="price" value="{{paintings[id|int].price}}">
+            <br>
+            <input type="submit" value="Update">
+            </form>
+            {{session['error']}}
+    </body>
+</html>
