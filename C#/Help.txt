@@ -1,0 +1,4 @@
+Commands:
+dotnet new console -o Puzzles
+cd Puzzles
+dotnet run
