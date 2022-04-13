@@ -80,7 +80,7 @@
      */
     minRecursive(current = this.root) {
         if(current.left != null){
-            return this.minRecursive(current.left);
+            return current.minRecursive(current.left);
         } else {
             return current.data;
         }

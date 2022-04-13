@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Mvc;
 namespace DojoSurvey
 {
@@ -5,8 +6,13 @@ namespace DojoSurvey
         // Requests
         // localhost:5000/
         [HttpGet("")]
-        public string HelloFromController(){
-            return "Hello From Controller";
+        public ViewResult Index(){
+
+
+            //Home/HiThere.cshtml
+            return View();
+            //return View("custom name with no extention");
+            //ex. return View("HiThere");
         }
 
         // localhost:5000/hello
@@ -23,6 +29,13 @@ namespace DojoSurvey
             }
             return $"Hello {username} from {location}";
             
+        }
+
+        [HttpGet("Hello2")]
+        public RedirectToActionResult Hello2(){
+            Console.WriteLine("Hello there, redirecting...");
+            var param = new{username = "IainJ", location = "Redmond"};
+            return RedirectToAction("HelloUser", param);
         }
     }
 }
