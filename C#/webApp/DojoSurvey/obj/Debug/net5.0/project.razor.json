@@ -15619,8 +15619,18 @@
   "RootNamespace": "DojoSurvey",
   "Documents": [
     {
-      "FilePath": "c:\\Users\\iaind\\OneDrive\\Documents\\DOJO\\C#\\webApp\\DojoSurvey\\Views\\Home\\Index.cshtml",
-      "TargetPath": "Views\\Home\\Index.cshtml",
+      "FilePath": "c:\\Users\\iaind\\OneDrive\\Documents\\DOJO\\C#\\webApp\\DojoSurvey\\Views\\Home\\Index2.cshtml",
+      "TargetPath": "Views\\Home\\Index2.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\iaind\\OneDrive\\Documents\\DOJO\\C#\\webApp\\DojoSurvey\\Views\\Home\\index.cshtml",
+      "TargetPath": "Views\\Home\\index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\iaind\\OneDrive\\Documents\\DOJO\\C#\\webApp\\DojoSurvey\\Views\\Home\\result.cshtml",
+      "TargetPath": "Views\\Home\\result.cshtml",
       "FileKind": "mvc"
     }
   ],

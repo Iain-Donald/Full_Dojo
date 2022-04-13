@@ -6,7 +6,7 @@ namespace DojoSurvey
         // Requests
         // localhost:5000/
         [HttpGet("")]
-        public ViewResult Index(){
+        public ViewResult index(){
 
 
             //Home/HiThere.cshtml

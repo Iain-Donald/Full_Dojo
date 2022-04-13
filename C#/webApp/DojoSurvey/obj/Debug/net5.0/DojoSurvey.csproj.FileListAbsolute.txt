@@ -32,3 +32,5 @@ C:\Users\iaind\OneDrive\Documents\DOJO\C#\webApp\DojoSurvey\obj\Debug\net5.0\Raz
 C:\Users\iaind\OneDrive\Documents\DOJO\C#\webApp\DojoSurvey\obj\Debug\net5.0\DojoSurvey.RazorTargetAssemblyInfo.cs
 C:\Users\iaind\OneDrive\Documents\DOJO\C#\webApp\DojoSurvey\obj\Debug\net5.0\DojoSurvey.Views.pdb
 C:\Users\iaind\OneDrive\Documents\DOJO\C#\webApp\DojoSurvey\obj\Debug\net5.0\DojoSurvey.csproj.CopyComplete
+C:\Users\iaind\OneDrive\Documents\DOJO\C#\webApp\DojoSurvey\obj\Debug\net5.0\Razor\Views\Home\Index2.cshtml.g.cs
+C:\Users\iaind\OneDrive\Documents\DOJO\C#\webApp\DojoSurvey\obj\Debug\net5.0\Razor\Views\Home\result.cshtml.g.cs
