@@ -1,41 +1,53 @@
 using System;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 namespace DojoSurvey
 {
     public class HomeController : Controller{
-        // Requests
-        // localhost:5000/
-        [HttpGet("")]
-        public ViewResult index(){
-
-
-            //Home/HiThere.cshtml
+        [HttpGet]
+        [Route("")]
+        public ViewResult index(string error){
             return View();
-            //return View("custom name with no extention");
-            //ex. return View("HiThere");
         }
 
-        // localhost:5000/hello
-        [HttpGet("hello")]
-        public string Hello(){
-            return "Hi again!";
+
+        [HttpGet("result")]
+        public ViewResult result(Dictionary<string, string> data){ 
+            ViewBag.name = data["name"];
+            ViewBag.location = data["location"];
+            ViewBag.favoriteLang = data["favoriteLang"];
+            ViewBag.comment = data["comment"];
+            ViewBag.error = data["error"];
+            return View();
         }
 
-        // localhost:5000/users/???
-        [HttpGet("users/{username}/{location}")]
-        public string HelloUser(string username, string location){
-            if(location == "Seattle"){
-                return $"Hello {username} from {location}. Go Seahawks!";
+        [HttpPost]
+        [Route("process")]
+        public IActionResult process(string name, string location, string favoriteLang, string comment){
+            Dictionary<string, string> data = new Dictionary<string, string>(){
+            {"name", name},
+            {"location", location},
+            {"favoriteLang", favoriteLang},
+            {"comment", comment},
+            {"error", ""}
+            };
+            if(!isValid(name, location, favoriteLang, comment)){
+                data["error"] = "Invalid input";
+            } else {
+                data["error"] = " ";
             }
-            return $"Hello {username} from {location}";
-            
+            return RedirectToAction("result", data);
         }
 
-        [HttpGet("Hello2")]
-        public RedirectToActionResult Hello2(){
-            Console.WriteLine("Hello there, redirecting...");
-            var param = new{username = "IainJ", location = "Redmond"};
-            return RedirectToAction("HelloUser", param);
+        public Boolean isValid(string name, string location, string favoriteLang, string comment){
+            if(name.Length < 2){
+                return false;
+            } else if(!(comment.Length == 0) && comment.Length < 20){
+                return false;
+            } else if(name.Length == 0 || location.Length == 0 || favoriteLang.Length == 0){
+                return false;
+            }
+            return true;
         }
     }
 }

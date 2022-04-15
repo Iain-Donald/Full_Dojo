@@ -6,7 +6,7 @@
     </head>
     <body>
         <div id="menu">
-            <form action="/process" method="POST">
+            <form action="process" method="post">
                 <label for="name">Your Name:</label>
                 <input type="text" name="name">
 
@@ -19,9 +19,9 @@
                 <option value="San Francisco">
                 </datalist>
 
-                <label for="language">Favorite Language:</label>
-                <input list="language" name="language">
-                <datalist id="language">
+                <label for="favoriteLang">Favorite Language:</label>
+                <input list="favoriteLang" name="favoriteLang">
+                <datalist id="favoriteLang">
                 <option value="Python">
                 <option value="JavaScript">
                 <option value="Java">
@@ -33,6 +33,7 @@
 
                 <input type="submit">
             </form>
+            <h1>@ViewBag.error</h1>
         </div>
     </body>
 </html>

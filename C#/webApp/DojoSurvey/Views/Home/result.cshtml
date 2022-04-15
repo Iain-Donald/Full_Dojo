@@ -6,10 +6,11 @@
     </head>
     <body>
         <h1>Submitted Info</h1>
-        <p>Name: {{session['name']}}</p>
-        <p>Dojo Location: {{session['location']}}</p>
-        <p>Favorite Language: {{session['language']}}</p>
-        <p>Comment: {{session['comment']}}</p>
+        <p>Name: @ViewBag.name</p>
+        <p>Dojo Location: @ViewBag.location</p>
+        <p>Favorite Language: @ViewBag.favoriteLang</p>
+        <p>Comment: @ViewBag.comment</p>
         <a href="/">Go Back</a>
+        <h1>@ViewBag.error</h1>
     </body>
 </html>
