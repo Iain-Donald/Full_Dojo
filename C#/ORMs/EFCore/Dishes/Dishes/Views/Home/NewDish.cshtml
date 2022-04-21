@@ -1,0 +1,33 @@
+@model Dish
+<a href="/"><button>Home</button></a>
+<br>
+<form asp-action="PostNewDish" asp-controller="Home" method="post">
+    <br>
+    <span asp-validation-for="chefName"></span>
+    <br>
+    <label asp-for="chefName"></label>
+    <input asp-for="chefName">
+    <br>
+    <span asp-validation-for="Name"></span>
+    <br>
+    <label asp-for="Name"></label>
+    <input asp-for="Name">
+    <br>
+    <span asp-validation-for="calories"></span>
+    <br>
+    <label asp-for="calories"></label>
+    <input asp-for="calories">
+    <br>
+    <span asp-validation-for="tastiness"></span>
+    <br>
+    <label asp-for="tastiness"></label>
+    <input asp-for="tastiness">
+    <br>
+    <span asp-validation-for="Description"></span>
+    <br>
+    <label asp-for="Description"></label>
+    <input asp-for="Description">
+
+    <br>
+    <input value="Create" type="submit">  
+</form>

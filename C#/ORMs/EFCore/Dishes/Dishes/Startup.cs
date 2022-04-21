@@ -22,11 +22,6 @@ namespace Dishes
         public IConfiguration Configuration { get; }
         public void ConfigureServices (IServiceCollection services)
         {
-            /*services.AddDbContext<MyContext>(
-        options => options.UseMySql(
-            "<connection string>",
-            providerOptions => providerOptions.EnableRetryOnFailure()));*/
-
             services.AddDbContext<MyContext>(options => options.UseMySql (Configuration["DBInfo:ConnectionString"], providerOptions => providerOptions.EnableRetryOnFailure()));
             services.AddMvc(options => options.EnableEndpointRouting = false);
         }

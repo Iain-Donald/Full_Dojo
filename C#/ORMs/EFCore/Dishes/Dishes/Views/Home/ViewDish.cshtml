@@ -1,0 +1,11 @@
+@model Dish
+<a href="/"><button>Home</button></a>
+<br>
+<h1>@Model.DishName</h1>
+<h2>@Model.ChefName</h2>
+<h4>@Model.Description</h4>
+<h4><b>calories:</b> @Model.calories</h4>
+<h4><b>tastiness:</b> @Model.tastiness</h4>
+<br>
+<a href="/delete/@Model.dishId"><button>Delete</button></a>
+<a href="/edit/@Model.dishId"><button>Edit</button></a>

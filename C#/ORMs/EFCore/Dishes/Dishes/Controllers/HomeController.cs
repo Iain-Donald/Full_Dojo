@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -26,9 +27,13 @@ namespace Dishes.Controllers
         [HttpGet("")]
         public IActionResult Index()
         {
+            //_context.SaveChanges();
             List<Dish> ALLDishes = _context.Dishes.ToList();
+            ViewBag.dishList = ALLDishes;
+            //ViewBag.dishList = ALLDishes.ToArray().Length;
+                //.Where(u => u.chefName.ToString().Equals("Iain Donald"));
             
-            return View();
+            return View(ALLDishes);
         }
     }
 }
