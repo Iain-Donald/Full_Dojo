@@ -9,3 +9,6 @@ dotnet watch run (look for updates and restart server when any changes are made)
 Adding Packages: 
 dotnet add package Pomelo.EntityFrameworkCore.MySql --version 3.1.1
 dotnet add package Microsoft.EntityFrameworkCore.Design --version 3.1.5
+
+Creating a basic C# console app:
+https://docs.microsoft.com/en-us/dotnet/core/tutorials/with-visual-studio-code?pivots=dotnet-5-0

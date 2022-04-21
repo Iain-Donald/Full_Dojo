@@ -1,0 +1,16 @@
+C:\Users\iaind\Documents\DOJO\Full_Dojo\C#\CollectionsPractice\bin\Debug\net5.0\CollectionsPractice.exe
+C:\Users\iaind\Documents\DOJO\Full_Dojo\C#\CollectionsPractice\bin\Debug\net5.0\CollectionsPractice.deps.json
+C:\Users\iaind\Documents\DOJO\Full_Dojo\C#\CollectionsPractice\bin\Debug\net5.0\CollectionsPractice.runtimeconfig.json
+C:\Users\iaind\Documents\DOJO\Full_Dojo\C#\CollectionsPractice\bin\Debug\net5.0\CollectionsPractice.runtimeconfig.dev.json
+C:\Users\iaind\Documents\DOJO\Full_Dojo\C#\CollectionsPractice\bin\Debug\net5.0\CollectionsPractice.dll
+C:\Users\iaind\Documents\DOJO\Full_Dojo\C#\CollectionsPractice\bin\Debug\net5.0\ref\CollectionsPractice.dll
+C:\Users\iaind\Documents\DOJO\Full_Dojo\C#\CollectionsPractice\bin\Debug\net5.0\CollectionsPractice.pdb
+C:\Users\iaind\Documents\DOJO\Full_Dojo\C#\CollectionsPractice\obj\Debug\net5.0\CollectionsPractice.csproj.AssemblyReference.cache
+C:\Users\iaind\Documents\DOJO\Full_Dojo\C#\CollectionsPractice\obj\Debug\net5.0\CollectionsPractice.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\iaind\Documents\DOJO\Full_Dojo\C#\CollectionsPractice\obj\Debug\net5.0\CollectionsPractice.AssemblyInfoInputs.cache
+C:\Users\iaind\Documents\DOJO\Full_Dojo\C#\CollectionsPractice\obj\Debug\net5.0\CollectionsPractice.AssemblyInfo.cs
+C:\Users\iaind\Documents\DOJO\Full_Dojo\C#\CollectionsPractice\obj\Debug\net5.0\CollectionsPractice.csproj.CoreCompileInputs.cache
+C:\Users\iaind\Documents\DOJO\Full_Dojo\C#\CollectionsPractice\obj\Debug\net5.0\CollectionsPractice.dll
+C:\Users\iaind\Documents\DOJO\Full_Dojo\C#\CollectionsPractice\obj\Debug\net5.0\ref\CollectionsPractice.dll
+C:\Users\iaind\Documents\DOJO\Full_Dojo\C#\CollectionsPractice\obj\Debug\net5.0\CollectionsPractice.pdb
+C:\Users\iaind\Documents\DOJO\Full_Dojo\C#\CollectionsPractice\obj\Debug\net5.0\CollectionsPractice.genruntimeconfig.cache

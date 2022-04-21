@@ -1,0 +1,6 @@
+C:\Users\iaind\Documents\DOJO\Full_Dojo\C#\ORMs\EFCore\Dishes\Dishes\obj\Debug\net5.0\Dishes.csproj.AssemblyReference.cache
+C:\Users\iaind\Documents\DOJO\Full_Dojo\C#\ORMs\EFCore\Dishes\Dishes\obj\Debug\net5.0\Dishes.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\iaind\Documents\DOJO\Full_Dojo\C#\ORMs\EFCore\Dishes\Dishes\obj\Debug\net5.0\Dishes.AssemblyInfoInputs.cache
+C:\Users\iaind\Documents\DOJO\Full_Dojo\C#\ORMs\EFCore\Dishes\Dishes\obj\Debug\net5.0\Dishes.AssemblyInfo.cs
+C:\Users\iaind\Documents\DOJO\Full_Dojo\C#\ORMs\EFCore\Dishes\Dishes\obj\Debug\net5.0\Dishes.csproj.CoreCompileInputs.cache
+C:\Users\iaind\Documents\DOJO\Full_Dojo\C#\ORMs\EFCore\Dishes\Dishes\obj\Debug\net5.0\Dishes.MvcApplicationPartsAssemblyInfo.cache
