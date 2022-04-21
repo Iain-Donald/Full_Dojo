@@ -1,34 +1,27 @@
 @model Dish
-<a href="/"><button>Home</button></a>
-<br>
-<h1>Edit @Model.Name</h1>
-<form action="/posteditdish/@Model.DishId" method="post">
-    <br>
-    <span asp-validation-for="chefName"></span>
-    <br>
-    <label asp-for="chefName"></label>
-    <input asp-for="chefName">
-    <br>
-    <span asp-validation-for="Name"></span>
-    <br>
-    <label asp-for="Name"></label>
-    <input asp-for="Name">
-    <br>
-    <span asp-validation-for="calories"></span>
-    <br>
-    <label asp-for="calories"></label>
-    <input asp-for="calories">
-    <br>
-    <span asp-validation-for="tastiness"></span>
-    <br>
-    <label asp-for="tastiness"></label>
-    <input asp-for="tastiness">
-    <br>
-    <span asp-validation-for="Description"></span>
-    <br>
-    <label asp-for="Description"></label>
-    <input asp-for="Description">
-
-    <br>
-    <input value="Apply Edits" type="submit">  
-</form>
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="~/css/style.css"/>
+        <title>CRUDelicious</title>
+    </head>
+    <body>
+        <a href="/"><button>Home</button></a>
+        <br>
+        <h1>Edit @Model.Name</h1>
+        <form action="/posteditdish/@Model.DishId" method="post">
+            <label asp-for="chefName"></label>
+            <input asp-for="chefName">
+            <label asp-for="Name"></label>
+            <input asp-for="Name">
+            <label asp-for="calories"></label>
+            <input asp-for="calories">
+            <label asp-for="tastiness"></label>
+            <input asp-for="tastiness">
+            <label asp-for="Description"></label>
+            <input asp-for="Description">
+            <br>
+            <input value="Edit Dish" type="submit">  
+        </form> 
+    </body>
+</html>

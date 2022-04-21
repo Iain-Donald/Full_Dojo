@@ -7,13 +7,14 @@
     </head>
     <body>
         <h1>Welcome to CRUDelicious!</h1>
+        <a href="/new"><button>Add Dish</button></a>
         <ul>
             @{
-    foreach(var dish in @Model)
-    {
-        <li><a href="http://www.google.com">@dish.Name</a> by @dish.chefName</li>
-    }
-}
+                foreach(var dish in @Model)
+                {
+                    <li><a href="@dish.DishId">@dish.Name</a> by @dish.chefName</li>
+                }
+            }
         </ul>
     </body>
 </html>

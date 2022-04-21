@@ -1,11 +1,20 @@
 @model Dish
-<a href="/"><button>Home</button></a>
-<br>
-<h1>@Model.DishName</h1>
-<h2>@Model.ChefName</h2>
-<h4>@Model.Description</h4>
-<h4><b>calories:</b> @Model.calories</h4>
-<h4><b>tastiness:</b> @Model.tastiness</h4>
-<br>
-<a href="/delete/@Model.dishId"><button>Delete</button></a>
-<a href="/edit/@Model.dishId"><button>Edit</button></a>
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="~/css/style.css"/>
+        <title>CRUDelicious</title>
+    </head>
+    <body>
+        <a href="/"><button>Home</button></a>
+        <br>
+        <h1>@Model.Name</h1>
+        <h2>@Model.chefName</h2>
+        <p>@Model.Description</p>
+        <p>calories: @Model.calories</p>
+        <p>tastiness: @Model.tastiness</p>
+
+        <a href="/delete/@Model.DishId"><button>Delete</button></a>
+        <a href="/edit/@Model.DishId"><button>Edit</button></a>
+    </body>
+</html>
