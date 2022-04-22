@@ -3,6 +3,7 @@ dotnet new console -o Puzzles
 cd Puzzles
 dotnet run
 dotnet new web --no-https -o ProjectName
+dotnet new MVC -o ProjectName
 
 dotnet watch run (look for updates and restart server when any changes are made)
 
