@@ -5,6 +5,14 @@
         <title>Random Passcode</title>
     </head>
     <body>
-        
+        <div id="wrap">
+            <p>Random Passcode (passcode #@ViewBag.count)</p>
+            <div id="passcodeBox">
+                <p>@ViewBag.passcode</p>
+            </div>
+            <form action="generate">
+                <input type="submit" value="Generate" />
+            </form>
+        </div>
     </body>
 </html>

@@ -1,0 +1,16 @@
+C:\Users\iaind\OneDrive\Documents\DOJO\C#\Wizard\Wizard\bin\Debug\net5.0\Wizard.exe
+C:\Users\iaind\OneDrive\Documents\DOJO\C#\Wizard\Wizard\bin\Debug\net5.0\Wizard.deps.json
+C:\Users\iaind\OneDrive\Documents\DOJO\C#\Wizard\Wizard\bin\Debug\net5.0\Wizard.runtimeconfig.json
+C:\Users\iaind\OneDrive\Documents\DOJO\C#\Wizard\Wizard\bin\Debug\net5.0\Wizard.runtimeconfig.dev.json
+C:\Users\iaind\OneDrive\Documents\DOJO\C#\Wizard\Wizard\bin\Debug\net5.0\Wizard.dll
+C:\Users\iaind\OneDrive\Documents\DOJO\C#\Wizard\Wizard\bin\Debug\net5.0\ref\Wizard.dll
+C:\Users\iaind\OneDrive\Documents\DOJO\C#\Wizard\Wizard\bin\Debug\net5.0\Wizard.pdb
+C:\Users\iaind\OneDrive\Documents\DOJO\C#\Wizard\Wizard\obj\Debug\net5.0\Wizard.csproj.AssemblyReference.cache
+C:\Users\iaind\OneDrive\Documents\DOJO\C#\Wizard\Wizard\obj\Debug\net5.0\Wizard.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\iaind\OneDrive\Documents\DOJO\C#\Wizard\Wizard\obj\Debug\net5.0\Wizard.AssemblyInfoInputs.cache
+C:\Users\iaind\OneDrive\Documents\DOJO\C#\Wizard\Wizard\obj\Debug\net5.0\Wizard.AssemblyInfo.cs
+C:\Users\iaind\OneDrive\Documents\DOJO\C#\Wizard\Wizard\obj\Debug\net5.0\Wizard.csproj.CoreCompileInputs.cache
+C:\Users\iaind\OneDrive\Documents\DOJO\C#\Wizard\Wizard\obj\Debug\net5.0\Wizard.dll
+C:\Users\iaind\OneDrive\Documents\DOJO\C#\Wizard\Wizard\obj\Debug\net5.0\ref\Wizard.dll
+C:\Users\iaind\OneDrive\Documents\DOJO\C#\Wizard\Wizard\obj\Debug\net5.0\Wizard.pdb
+C:\Users\iaind\OneDrive\Documents\DOJO\C#\Wizard\Wizard\obj\Debug\net5.0\Wizard.genruntimeconfig.cache

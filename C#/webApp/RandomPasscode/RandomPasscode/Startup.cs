@@ -31,8 +31,8 @@ namespace RandomPasscode
             app.UseRouting();
 
             app.UseStaticFiles();
-            app.UseMvc();
             app.UseSession();
+            app.UseMvc();
         }
     }
 }

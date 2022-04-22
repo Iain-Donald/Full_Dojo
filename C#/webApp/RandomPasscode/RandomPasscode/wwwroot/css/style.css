@@ -1,0 +1,15 @@
+* {
+    background-color: #FAFBFF;
+}
+
+#passcodeBox {
+    border: 1px solid black;
+}
+
+#wrap {
+    justify-content: center;
+    margin: auto;
+    width: 100px;
+}
+
+
