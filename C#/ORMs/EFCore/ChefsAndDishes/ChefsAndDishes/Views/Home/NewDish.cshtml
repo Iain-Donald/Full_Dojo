@@ -1,0 +1,37 @@
+@model Dish
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Add a Dish!</title>
+    </head>
+    <body>
+<h1>Add a Dish!</h1>
+<a href="/"><button>Home</button></a>
+<form asp-action="PostNewDish" asp-controller="Home" method="post">
+    <label asp-for="dishName"></label>
+    <input asp-for="dishName">
+    <label asp-for="calories"></label>
+    <input asp-for="calories">
+    <label asp-for="description"></label>
+    <input asp-for="description">
+    <label asp-for="chefIDLink"></label>
+    <select asp-for="chefIDLink">
+        @{
+        foreach(var chef in ViewBag.AllChefs)
+            {
+                <option value="@chef.chefID">@chef.firstName @chef.lastName</option>    
+            }
+        }
+    </select>
+    <label asp-for="tastiness"></label>
+    <select asp-for="tastiness">
+        @for(int i = 1; i <= 5; i++)
+        {
+            <option value="@i">@i</option>
+        }
+    </select>
+
+    <input value="Add Dish" type="submit">
+</form>
+</body>
+</html>
