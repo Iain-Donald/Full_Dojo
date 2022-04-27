@@ -1,0 +1,21 @@
+@model MeetUp
+<h2 class="split">Welcome, @ViewBag.Name</h2>
+<a href="/logout" class="split"><button>Logout</button></a>
+<a href="/home" class="split"><button>Home</button></a>
+<hr>
+<h1>@Model.name</h1>
+<p>Description: @Model.description</p>
+<p>Date and Time: @Model.dateAndTime</p>
+<p>Duration: @Model.duration</p>
+<p>UsersJoined: </p>@{
+    for(int i = 0; i < ViewBag.Participants; i++){
+        <p>@ViewBag.Participants[i]</p>
+    }
+    @Model.UsersJoined.Count;
+}
+@{
+    foreach (var u in @Model.UsersJoined.OrderByDescending(b => b.User.createdAt).ToList())
+    {
+        <h5>@u.User.name</h5>
+    }
+}

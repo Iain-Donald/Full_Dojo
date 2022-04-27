@@ -10,21 +10,16 @@ using Microsoft.AspNetCore.Http;
 
 namespace ChefsAndDishes.Controllers
 {
-    public class HomeController : Controller
-    {
+    public class HomeController : Controller {
         private MyContext _context;
-
-        public HomeController(MyContext context)
-        {
+        public HomeController(MyContext context){
             _context = context;
         }
 
         [HttpGet("")]
-        public IActionResult Chefs()
-        {
+        public IActionResult Chefs(){
             List<Chef> AllChefs = new List<Chef> { };
-            if (_context.Chefs.ToList().Count > 0)
-            {
+            if (_context.Chefs.ToList().Count > 0){
                 AllChefs = _context.Chefs
                 .Include(chef => chef.Dishes)
                 .ToList();
@@ -32,12 +27,23 @@ namespace ChefsAndDishes.Controllers
             return View(AllChefs);
         }
 
+        [HttpGet("new")]
+        public IActionResult NewChef(){
+            return View();
+        }
+
+        [HttpPost("post_chef")]
+        public IActionResult PostNewChef(Chef chef){
+            _context.Chefs.Add(chef);
+            _context.SaveChanges();
+            return RedirectToAction("Chefs");
+        }
+
         [HttpGet("dishes")]
-        public IActionResult Dishes()
-        {
+        public IActionResult Dishes(){
             List<Dish> AllDishes = new List<Dish> { };
-            if (_context.Dishes.ToList().Count > 0)
-            {
+
+            if (_context.Dishes.ToList().Count > 0){
                 AllDishes = _context.Dishes
                     .Include(dish => dish.chefCreator)
                     .ToList();
@@ -46,33 +52,17 @@ namespace ChefsAndDishes.Controllers
         }
 
         [HttpGet("dishes/new")]
-        public IActionResult NewDish()
-        {
+        public IActionResult NewDish(){
             List<Chef> AllChefs = _context.Chefs.ToList();
             ViewBag.AllChefs = AllChefs;
             return View();
         }
 
         [HttpPost("post_dish")]
-        public IActionResult PostNewDish(Dish dish)
-        {
+        public IActionResult PostNewDish(Dish dish){
             _context.Dishes.Add(dish);
             _context.SaveChanges();
             return RedirectToAction("Dishes");
-        }
-
-        [HttpGet("new")]
-        public IActionResult NewChef()
-        {
-            return View();
-        }
-
-        [HttpPost("post_chef")]
-        public IActionResult PostNewChef(Chef chef)
-        {
-            _context.Chefs.Add(chef);
-            _context.SaveChanges();
-            return RedirectToAction("Chefs");
         }
     }
 }

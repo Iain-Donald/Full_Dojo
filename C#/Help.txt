@@ -1,3 +1,5 @@
+https://localhost:5001/
+https://localhost:5000/
 Commands:
 dotnet new console -o Puzzles
 cd Puzzles
@@ -19,3 +21,23 @@ dotnet add package EntityFramework --version 5.0
 dotnet ef migrations add ChefAndDishMigration
 
 dotnet ef database update
+
+dishes.cshtml:
+<td>@dish.chefCreator.firstName @dish.chefCreator.lastName</td>
+
+
+// Useful goods: //
+
+Linq count: https://stackoverflow.com/questions/7749661/count-rows-in-linq
+List<T>.Count: https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.count?view=net-6.0
+DateTime.compare: https://docs.microsoft.com/en-us/dotnet/api/system.datetime.compare?view=net-6.0
+Parse DateTime Strings: https://docs.microsoft.com/en-us/dotnet/standard/base-types/parsing-datetime
+Linq Delete 1: https://stackoverflow.com/questions/15469684/proper-way-to-delete-record-in-linq-to-entities
+Delete rows from the database: https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql/linq/how-to-delete-rows-from-the-database
+Simple delete: http://dotnetlearners.com/linq/linq-to-sql-delete-records-from-table
+/*
+MyDBDataContext sqlObj = new MyDBDataContext();
+tblDepartment dept = sqlObj.tblDepartments.Single(x => x.DepartmentID == 5);
+sqlObj.tblDepartments.DeleteOnSubmit(dept);
+sqlObj.SubmitChanges();
+*/

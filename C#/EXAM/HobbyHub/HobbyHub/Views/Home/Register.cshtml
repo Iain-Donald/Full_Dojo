@@ -1,0 +1,17 @@
+@model User
+<h1>Register</h1>
+<br>
+<form asp-action="Register" asp-controller="Home" method="post">
+    <label asp-for="firstName"></label>
+    <input asp-for="firstName">
+    <label asp-for="lastName"></label>
+    <input asp-for="lastName">
+    <label asp-for="username"></label>
+    <input asp-for="username">
+    <label asp-for="password"></label>
+    <input asp-for="password">
+    <label asp-for="Confirm"></label>
+    <input asp-for="Confirm">
+
+    <input value="Register" type="submit">
+</form>

@@ -1,13 +1,21 @@
 @model Chef
-<h1>Add a Chef!</h1>
-<a href="/"><button>Home</button></a>
-<form asp-action="PostNewChef" asp-controller="Home" method="post">
-    <label asp-for="firstName"></label>
-    <input asp-for="firstName">
-    <label asp-for="lastName"></label>
-    <input asp-for="lastName">
-    <label asp-for="DateOfBirth"></label>
-    <input asp-for="DateOfBirth">
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Add a Chef!</title>
+    </head>
+    <body>
+        <h1>Add a Chef!</h1>
+        <a href="/">Home</a>
+        <form asp-action="PostNewChef" asp-controller="Home" method="post">
+            <label asp-for="firstName"></label>
+            <input asp-for="firstName">
+            <label asp-for="lastName"></label>
+            <input asp-for="lastName">
+            <label asp-for="DateOfBirth"></label>
+            <input asp-for="DateOfBirth">
 
-    <input value="Add Chef" type="submit">
-</form>
+            <input value="Add Chef" type="submit">
+        </form>
+    </body>
+</html>

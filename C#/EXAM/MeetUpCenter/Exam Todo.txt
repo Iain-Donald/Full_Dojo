@@ -1,0 +1,22 @@
+YES Login and Registration with Validations
+MOST Validation messages should display for unsuccessful submissions
+YES (Registration) Password with a minimum length of 8 characters
+YES (Registration) Name with a minimum length of 2 characters
+YES (Registration) Valid Email Address
+YES (Registration) No duplicate Emails
+YES (Login) Valid Email and Password
+YES Dashboard
+YES Meet ups should be displayed in order of date/time with the most recent at the top.
+NO Ability to join or leave a meet up.
+NO Ability to delete a meet up if the logged user created it.
+YES Meet Up name redirects to the Meet Up page.
+YES Add New Meet Up button redirects to New Meet Up page.
+YES Meet Up Details
+NO Ability to Join or Leave a meet up based on the current logged user.
+NO Can Delete a meet up if the logged user created it.
+NO List all other users participating in the meet up.
+YES New Activity
+YES Meet Up Date must be in the future
+YES Title and description are required fields
+YES Backend
+YES Use LINQ to persist and query data in a MySQL server

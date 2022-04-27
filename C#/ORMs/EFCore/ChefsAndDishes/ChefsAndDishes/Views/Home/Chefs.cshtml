@@ -1,20 +1,34 @@
 ﻿@model List<Chef>
-<h1>Chefs | <a href="dishes">Dishes</a></h1>
-<a href="new"><button>Add a Chef</button></a>
-<br>
-<h2>Check out our roster of Chefs!</h2>
-<table class="table">
-    <tr>
-        <td>Name</td>
-        <td>Age</td>
-        <td># of Dishes</td>
-    </tr>
-    @foreach(var chef in @Model)
-    {
-        <tr>
-            <td>@chef.firstName @chef.lastName</td>
-            <td>@chef.DateOfBirth</td>
-            <td>@chef.Dishes.Count</td>
-        </tr>
-    }
-</table>
+    <!DOCTYPE html>
+<html>
+    <head>
+        <title>Chefs</title>
+    </head>
+    <body>
+        <h1>Chefs | <a href="dishes">Dishes</a></h1>
+        <a href="new">Add a Chef</a>
+        <br>
+        <h2>Check out our roster of Chefs!</h2>
+        <table class="table">
+            <tr>
+                <td>Name</td>
+                <td>Age</td>
+                <td># of Dishes</td>
+            </tr>
+            @foreach(var chef in @Model)
+            {
+                <tr>
+                    <td>@chef.firstName @chef.lastName</td>
+                    <td>
+                    @{
+                        int years = @DateTime.Now.Subtract(chef.DateOfBirth).Days / 365;
+                    }
+                    @years (Birthdate: @chef.DateOfBirth)
+                        
+                    </td>
+                    <td>in progress</td>
+                </tr>
+            }
+        </table>
+    </body>
+</html>
