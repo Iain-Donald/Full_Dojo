@@ -47,11 +47,6 @@ const People = (props) => {
     skinColor = LocalSWAPI.results[id].skin_color.toString();
   } else {
     console.log("error: SWAPI returned null");
-    displayName = "null";
-    height = "null";
-    mass = "null";
-    hairColor = "null";
-    skinColor = "null";
   }
 
   return (
@@ -65,26 +60,42 @@ const People = (props) => {
   );
 }
 
-// RETURN PEOPLE
+// RETURN Planets
 const Planets = (props) => {
   const { id } = useParams();
 
-  var displayString = SWAPI("planets");
+  var LocalSWAPI = SWAPI("planets");
+  var displayName;
+  var climate;
+  var terrain;
+  var surfaceWater;
+  var population;
 
-  if(displayString.toString() != "0,1,2"){
-    console.log("success: " + displayString.results[id].name);
-    displayString = displayString.results[id].name.toString();
+  if(LocalSWAPI.toString() != "0,1,2"){
+    console.log("success: " + LocalSWAPI.results[id].name);
+    displayName = LocalSWAPI.results[id].name.toString();
+    climate = LocalSWAPI.results[id].climate.toString();
+    terrain = LocalSWAPI.results[id].terrain.toString();
+    surfaceWater = LocalSWAPI.results[id].surface_water.toString();
+    population = LocalSWAPI.results[id].population.toString();
   } else {
     console.log("error: SWAPI returned null");
-    displayString = "null";
   }
 
   return (
     <div>
-      <h1>Welcome to { id }!</h1>
-      <p>{displayString}</p>
+      <h1>{displayName}</h1>
+      <p><b>Climate: </b>{climate}</p>
+      <p><b>Terrain: </b>{terrain}</p>
+      <p><b>Surface Water: </b>{surfaceWater}</p>
+      <p><b>Population: </b>{population}</p>
     </div>
   );
+}
+var ID = 0;
+
+function setID(id){
+
 }
     
 function App() {
@@ -92,17 +103,16 @@ function App() {
   return (
     <BrowserRouter>
       <p>
-        <Link to="/people/0">0</Link>
+        <Link to="/people/0">People</Link>
         &nbsp;|&nbsp;
-        <Link to="/people/1">1</Link>
-        &nbsp;|&nbsp;
-        <Link to="/people/2">2</Link>
-        &nbsp;|&nbsp;
-        <Link to="/people/3">3</Link>
+        <Link to="/planets/0">Planets</Link>
       </p>
       <Switch>
         <Route path="/people/:id">
           <People />
+        </Route>
+        <Route path="/planets/:id">
+          <Planets />
         </Route>
       </Switch>
     </BrowserRouter>

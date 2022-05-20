@@ -1,0 +1,9 @@
+npm install @faker-js/faker --save-dev
+npm install -g nodemon
+node server.js
+npm install
+npm start
+npm install react-router-dom@5
+npm install axios
+npx create-react-app lukeapiwalker
+pkill -f node (Task Manager kill Node.js from processes)

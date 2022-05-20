@@ -26,7 +26,7 @@ function App() {
     <div>
       <List output={out}/>
       
-
+      
     </div>
     
   );
