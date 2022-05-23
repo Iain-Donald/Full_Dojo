@@ -1,9 +1,17 @@
 npm install @faker-js/faker --save-dev
 npm install -g nodemon
-node server.js
 npm install
 npm start
 npm install react-router-dom@5
 npm install axios
 npx create-react-app lukeapiwalker
 pkill -f node (Task Manager kill Node.js from processes)
+
+npm run start
+node server.js
+nodemon server.js
+
+node server.js
+npm start
+
+<tr><a href={"http://localhost:8000/api/getByID/" + thing._id}>////Express: {thing.title}////</a></tr>
