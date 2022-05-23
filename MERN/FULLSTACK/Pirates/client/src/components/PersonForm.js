@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../App.css';
 export default () => {
     //keep track of what is being typed via useState hook
@@ -9,9 +9,13 @@ export default () => {
     const [chests, setChests] = useState("");
     const [piratePhrase, setPhrase] = useState("");
     let [crewPosition, setPosition] = useState("");
-    let [pegLeg, setPegLeg] = useState("");
-    let [eyePatch, setEyePatch] = useState("");
-    let [hookHand, setHookHand] = useState("");
+    let [pegLeg, setPegLeg] = useState(true);
+    let [eyePatch, setEyePatch] = useState(true);
+    let [hookHand, setHookHand] = useState(true);
+    const navigate = useNavigate();
+
+    const [errors, setErrors] = useState([]); 
+
     const onSubmitHandler = e => {
         e.preventDefault();
 
@@ -30,8 +34,19 @@ export default () => {
             eyePatch,
             hookHand
         })
-            .then(res=>console.log(res))
-            .catch(err=>console.log(err))
+        .then(res=>{
+            console.log(res)
+            navigate("/");
+        }) // If successful, do something with the response. 
+        .catch(err=>{
+            const errorResponse = err.response.data.errors; // Get the errors from err.response.data
+            const errorArr = []; // Define a temp error array to push the messages in
+            for (const key of Object.keys(errorResponse)) { // Loop through all errors and get the messages
+                errorArr.push(errorResponse[key].message)
+            }
+            // Set Errors
+            setErrors(errorArr);
+        })
     }
 
     return (
@@ -44,6 +59,7 @@ export default () => {
             </div>
                 <form onSubmit={onSubmitHandler}>
                     <div class='displayCenter'>
+                    {errors.map((err, index) => <p id='errorText' key={index}>{err}</p>)}
                     <p>
                         <label>Pirate Name:</label><br/>
                         <input type="text" onChange={(e)=>setName(e.target.value)} value={pirateName}/>
@@ -71,15 +87,15 @@ export default () => {
                     </p>
                     <p>
                         <label>Peg Leg:</label><br/>
-                        <input type="checkbox" onChange={(e)=>setPegLeg(e.target.checked)} value="true"/>
+                        <input type="checkbox" defaultChecked={true} onChange={(e)=>setPegLeg(e.target.checked)}/>
                     </p>
                     <p>
                         <label>Eye Patch:</label><br/>
-                        <input type="checkbox" onChange={(e)=>setEyePatch(e.target.checked)} value="true"/>
+                        <input type="checkbox" defaultChecked={true} onChange={(e)=>setEyePatch(e.target.checked)}/>
                     </p>
                     <p>
                         <label>Hook Hand:</label><br/>
-                        <input type="checkbox" onChange={(e)=>setHookHand(e.target.checked)} value="true"/>
+                        <input type="checkbox" defaultChecked={true} onChange={(e)=>setHookHand(e.target.checked)}/>
                     </p>
                     <input type="submit" value="Add Pirate"/>
                     </div>

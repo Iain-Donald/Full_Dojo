@@ -8,7 +8,7 @@ const PersonSchema = new mongoose.Schema({
     },
     imageURL: {
         type: String,
-        required: [true, "Image is required"]
+        required: [true, "Image URL is required"]
     },
     chests: {
         type: String,
@@ -40,9 +40,3 @@ module.exports.findAllUsers = (request, response) => {
         .then(all => response.json({ message: all }))
         .catch(err => response.json({ message: 'Something went wrong', error: err }));
 }
-
-/*module.exports.index = (request, response) => {
-    response.json({
-        message: "Hello World"
-    });
-}*/

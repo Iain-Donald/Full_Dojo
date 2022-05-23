@@ -21,14 +21,14 @@ module.exports.createPerson = (request, response) => {
         hookHand
     })
         .then(person=>response.json(person))
-        .catch(err=>response.json(err));
+        .catch(err=>response.status(400).json(err));
 }
 
 
 // Product manager 3 //
 
 module.exports.editPerson = (request, response) => {
-    const {title, price, description } = request.body; //  \/ assign mongo element to request.body vars \/
+    const {title, price, description } = request.body;
     Person.findByIdAndUpdate( request.params.id, { 
         title: title,
         price: price,
